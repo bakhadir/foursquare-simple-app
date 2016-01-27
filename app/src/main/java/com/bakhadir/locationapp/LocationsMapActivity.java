@@ -265,7 +265,7 @@ public class LocationsMapActivity extends FragmentActivity implements OnMapReady
 
     @Override
     public void onError(String errorMsg) {
-        // TODO: TOAST
+        // TODO: create TOAST
     }
 
     private void buildVenuePhotosGrid() {
