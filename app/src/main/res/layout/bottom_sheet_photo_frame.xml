@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp">
+
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/venuePhoto"
+       android:layout_width="match_parent"
+       android:layout_height="200dp"
+       android:scaleType="centerCrop"/>
+
+    <ImageView
+        android:id="@+id/photoZLayer"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/black"
+        android:alpha="0.3"/>
+
+    <LinearLayout
+        android:id="@+id/venueInfoLinear"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical"
+        android:layout_gravity="bottom">
+
+        <TextView
+            android:id="@+id/venueName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:ellipsize="end"
+            android:textColor="@color/white"
+            android:alpha="0.8"
+            android:text="Venue Name"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/venueAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:ellipsize="end"
+            android:textColor="@color/white"
+            android:alpha="0.8"
+            android:text="Venue Address"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/venuePhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:ellipsize="end"
+            android:textColor="@color/white"
+            android:alpha="0.8"
+            android:text="Venue Phone"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <include
+        android:id="@+id/ratingView"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="end|top"
+        android:layout_margin="10dp"
+        layout="@layout/venue_rating_frame_layout"/>
+
+    <TextView
+        android:id="@+id/isOpen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textSize="12sp"
+        android:textColor="@color/white"
+        android:layout_gravity="start|top"
+        android:alpha="0.7"/>
+
+</FrameLayout>

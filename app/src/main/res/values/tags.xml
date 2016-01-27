@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item
+        name="TAG_PHONE_ICON"
+        type="id"
+        value="some_value"/>
+    <item
+        name="TAG_MENU_ICON"
+        type="id"
+        value="some_value_1"/>
+</resources>
