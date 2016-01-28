@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements AccessTokenReques
         locationsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), FoursquareLocationsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LocationsActivity.class);
                 startActivity(intent);
             }
         });

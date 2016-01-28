@@ -15,10 +15,8 @@ import android.view.ViewGroup;
 import com.bakhadir.locationapp.adapters.LocationsAdapter;
 import com.bakhadir.locationapp.app.AppController;
 import com.bakhadir.locationapp.models.Venue;
-import com.bakhadir.locationapp.utils.VenuesListSort;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * Created by sam_ch on 1/20/2016.
@@ -84,13 +82,13 @@ public class LocationsListFragment extends Fragment {
         // Clear Volley Cache (we want to get new Locations around)
         AppController.getInstance().getRequestQueue().getCache().clear();
         // Restart activity
-        Intent intent = new Intent(getActivity(), FoursquareLocationsActivity.class);
+        Intent intent = new Intent(getActivity(), LocationsActivity.class);
         startActivity(intent);
         getActivity().finish();
     }
 
     private void initDataset() {
-        FoursquareLocationsActivity activity = (FoursquareLocationsActivity) getActivity();
+        LocationsActivity activity = (LocationsActivity) getActivity();
         myDataset = activity.getCompactVenues();
         Log.i(TAG, "initDataset");
     }

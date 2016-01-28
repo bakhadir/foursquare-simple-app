@@ -257,7 +257,9 @@ public class LocationsMapActivity extends FragmentActivity implements OnMapReady
         completeVenue = venue;
         mVenuePhoto.setErrorImageResId(R.drawable.ic_image_grey600_36dp);
         // Get venue's best photo url
-        mVenuePhoto.setImageUrl(LocationAppUtils.buildPhotoUrl(completeVenue.getBestPhoto()), AppController.getInstance().getImageLoader());
+        if(completeVenue.getBestPhoto() != null) {
+            mVenuePhoto.setImageUrl(LocationAppUtils.buildPhotoUrl(completeVenue.getBestPhoto()), AppController.getInstance().getImageLoader());
+        }
         if(completeVenue.getPhotos() != null && !completeVenue.getPhotos().isEmpty()) {
             buildVenuePhotosGrid();
         }

@@ -181,8 +181,5 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
             Log.i(TAG, errorMsg);
             super.onError(errorMsg);
         }
-
-
     }
-
 }

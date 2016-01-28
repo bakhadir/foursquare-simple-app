@@ -3,11 +3,7 @@ package com.bakhadir.locationapp;
 import android.app.Instrumentation;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
-import android.test.ViewAsserts;
 import android.test.suitebuilder.annotation.MediumTest;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 
 /**
@@ -36,10 +32,10 @@ public class ClickLocationsButtonTest extends ActivityInstrumentationTestCase2<M
     // Test LocationsButton behaviour
     @MediumTest
     public void testLocationsButton_clickButtonAndExpectNewActivityLaunch() {
-        Instrumentation.ActivityMonitor activityMonitor = getInstrumentation().addMonitor(FoursquareLocationsActivity.class.getName(), null, false);
+        Instrumentation.ActivityMonitor activityMonitor = getInstrumentation().addMonitor(LocationsActivity.class.getName(), null, false);
         TouchUtils.clickView(this, mLocationsButton);
-        FoursquareLocationsActivity targetActivity = (FoursquareLocationsActivity) activityMonitor.waitForActivity();
-        assertNotNull("FoursquareLocationsActivity is not launched", targetActivity);
+        LocationsActivity targetActivity = (LocationsActivity) activityMonitor.waitForActivity();
+        assertNotNull("LocationsActivity is not launched", targetActivity);
     }
 
 }

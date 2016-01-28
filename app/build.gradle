@@ -34,5 +34,4 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:2.7.0'
     compile 'commons-io:commons-io:2.4'
     compile 'com.flipboard:bottomsheet-core:1.5.0'
-    //    compile 'org.json:json:20151123'
 }

@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FoursquareLocationsActivity"
+            android:name=".LocationsActivity"
             android:label="@string/locations_title"
             android:screenOrientation="portrait">
         </activity>
@@ -42,7 +42,7 @@
             android:label="@string/title_activity_locations_map">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bakhadir.locationapp.FoursquareLocationsActivity" />
+                android:value=".LocationsActivity" />
         </activity>
 
         <activity

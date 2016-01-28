@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -32,16 +33,11 @@ public class VenuePhotosAdapter extends RecyclerView.Adapter<VenuePhotosAdapter.
 
     private ArrayList<String> mDataset = new ArrayList<>();
     private Context context;
-    private LinearLayout.LayoutParams params;
 
     // Constructor
     public VenuePhotosAdapter(ArrayList<String> myDataset, Context context) {
         mDataset = myDataset;
         this.context = context;
-
-        // Create layout parameters for "Load More" image view
-        params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
     }
 
     public void addLoadMoreImage() {
@@ -83,11 +79,20 @@ public class VenuePhotosAdapter extends RecyclerView.Adapter<VenuePhotosAdapter.
         return new ViewHolder(v, new ViewHolder.ViewHolderClickListener() {
             @Override
             public void onViewHolderClick(View callerView, int position) {
-                // TODO: fire up fullscreen image view
-                Intent intent = new Intent(context, VenuePhotosFullScreenActivity.class);
-                intent.putExtra("image_position", position);
-                intent.putStringArrayListExtra("venue_photos_urls", mDataset);
-                context.startActivity(intent);
+                if(position == (mDataset.size()-1)) {
+//                    Intent intent = new Intent(context, VenuePhotosGridActivity.class);
+                    Log.i(TAG, "VENUE PHOTOS GRID ACTIVITY HERE");
+                } else {
+                    // TODO: fire up fullscreen image view
+                    // Create new dataset without last element for Fullscreen activity
+                    ArrayList<String> intentDataset = new ArrayList<>();
+                    intentDataset.addAll(mDataset);
+                    intentDataset.remove(mDataset.size()-1);
+                    Intent intent = new Intent(context, VenuePhotosFullScreenActivity.class);
+                    intent.putExtra("image_position", position);
+                    intent.putStringArrayListExtra("venue_photos_urls", intentDataset);
+                    context.startActivity(intent);
+                }
             }
         });
     }
@@ -98,9 +103,10 @@ public class VenuePhotosAdapter extends RecyclerView.Adapter<VenuePhotosAdapter.
         // - get element from dataset at this position
         // - replace the contents of the view with that element
         // TODO: testing (setting up last "Load More" image view)
-        if(position == mDataset.size()) {
-            holder.mVenuePhoto.setDefaultImageResId(R.drawable.ic_image_grey600_36dp); // TODO: create "Load More" Image
-            holder.mVenuePhoto.setLayoutParams(params);
+        if(position == (mDataset.size()-1)) {
+            holder.mVenuePhoto.setDefaultImageResId(R.drawable.ic_load_more_image_grey600_36dp);
+//            holder.mVenuePhoto.setErrorImageResId(R.drawable.ic_facebook_box_grey600_36dp);
+//            holder.mVenuePhoto.setImageUrl("", AppController.getInstance().getImageLoader());
             holder.mVenuePhoto.setScaleType(ImageView.ScaleType.CENTER);
         } else {
             holder.mVenuePhoto.setDefaultImageResId(R.drawable.ic_image_grey600_36dp);
