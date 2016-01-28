@@ -38,7 +38,7 @@ TODO:
 - Userless requests.
 - Material Design (animations).
 - One map with all locations.
-- Settings (default search Criteria, sorting).
+- Settings (default search Criteria, more sorting options).
 - UI adjustments (portrait/landscape, tablet layout).
 
 
