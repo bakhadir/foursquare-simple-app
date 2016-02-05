@@ -66,7 +66,7 @@ public class SelfInfoRequest {
 
                 @Override
                 public void onErrorResponse(VolleyError vError) {
-                    VolleyLog.d(TAG, "Error: " + error.getMessage());
+                    VolleyLog.d(TAG, "Error: " + vError.getMessage());
                     // Hide Progress Dialog
                     hideProgressDialog();
                     error = new Exception(vError.toString());

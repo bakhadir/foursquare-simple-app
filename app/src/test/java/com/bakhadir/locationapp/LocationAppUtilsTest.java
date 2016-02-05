@@ -91,6 +91,6 @@ public class LocationAppUtilsTest {
 
     @Test
     public void testBuildPhotoUrl() {
-        assertEquals("nulloriginalnull", LocationAppUtils.buildPhotoUrl(new Photo())); // TODO MOCK
+        assertEquals("nulloriginalnull", LocationAppUtils.buildPhotoUrl(new Photo())); // TODO mock Photo object
     }
 }

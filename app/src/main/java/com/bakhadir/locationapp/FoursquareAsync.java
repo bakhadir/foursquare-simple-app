@@ -9,10 +9,12 @@ import com.bakhadir.locationapp.criterias.VenuesExploreCriteria;
 import com.bakhadir.locationapp.listeners.AccessTokenRequestListener;
 import com.bakhadir.locationapp.listeners.CompleteVenueInfoListener;
 import com.bakhadir.locationapp.listeners.FoursquareVenuesRequestListener;
+import com.bakhadir.locationapp.listeners.ImageRequestListener;
 import com.bakhadir.locationapp.listeners.UserInfoRequestListener;
 import com.bakhadir.locationapp.listeners.VenuePhotosListener;
 import com.bakhadir.locationapp.tasks.VenuePhotosRequest;
 import com.bakhadir.locationapp.tasks.users.SelfInfoRequest;
+import com.bakhadir.locationapp.tasks.users.UserImageRequest;
 import com.bakhadir.locationapp.tasks.venues.CompleteVenueRequest;
 import com.bakhadir.locationapp.tasks.venues.FoursquareVenuesNearbyRequest;
 import com.bakhadir.locationapp.dialogs.FoursquareDialog;
@@ -29,6 +31,10 @@ public class FoursquareAsync {
 
     public FoursquareAsync(Activity activity) {
         mActivity = activity;
+    }
+
+    // Mainly for testing
+    public FoursquareAsync() {
     }
 
     /**
@@ -77,11 +83,22 @@ public class FoursquareAsync {
     }
 
     /**
+     * Requests logged user photo.
+     *
+     * @param listener Listener to pass bitmap back to MainActivity
+     * @param photoUrl User's photo URL
+     */
+    public void getUserPhotoBitmap(ImageRequestListener listener, String photoUrl) {
+        UserImageRequest userImageRequest = new UserImageRequest(listener);
+        userImageRequest.execute(photoUrl);
+    }
+
+    /**
      * Requests the nearby Venues.
      *
      * @param criteria The criteria to your search request
      * @param listener As the request is asynchronous, listener used to retrieve the
-     *                 User object, containing the information.
+     *                 Venues object, containing the information.
      */
     public void getVenuesNearby(FoursquareVenuesRequestListener listener, VenuesExploreCriteria criteria) {
         FoursquareVenuesNearbyRequest request = new FoursquareVenuesNearbyRequest(listener, criteria);
@@ -98,5 +115,4 @@ public class FoursquareAsync {
         VenuePhotosRequest request = new VenuePhotosRequest(listener, venueId);
         request.execute(getAccessToken());
     }
-
 }

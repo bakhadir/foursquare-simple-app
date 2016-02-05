@@ -147,7 +147,7 @@ public class LocationsActivityTest extends ActivityInstrumentationTestCase2<Loca
                 return;
             }
             Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-            assertNotNull("mLastLocation is null", mLastLocation); // TODO: may be null though
+            assertNotNull("mLastLocation is null", mLastLocation);
         }
 
     }

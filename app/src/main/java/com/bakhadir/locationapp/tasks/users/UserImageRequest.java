@@ -28,6 +28,15 @@ public class UserImageRequest {
         mListener = listener;
     }
 
+    // For testing purposes
+//    public UserImageRequest() {
+//    }
+
+    // For testing purposes
+//    public void setImageRequestListener(ImageRequestListener listener) {
+//        mListener = listener;
+//    }
+
     // Getting user photo bitmap using Volley
     public void execute(String userPhotoUrl) {
 

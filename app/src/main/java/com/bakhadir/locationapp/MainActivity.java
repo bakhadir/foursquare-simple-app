@@ -16,7 +16,6 @@ import com.bakhadir.locationapp.listeners.AccessTokenRequestListener;
 import com.bakhadir.locationapp.listeners.ImageRequestListener;
 import com.bakhadir.locationapp.listeners.UserInfoRequestListener;
 import com.bakhadir.locationapp.models.User;
-import com.bakhadir.locationapp.tasks.users.UserImageRequest;
 
 public class MainActivity extends AppCompatActivity implements AccessTokenRequestListener, ImageRequestListener {
 
@@ -74,8 +73,7 @@ public class MainActivity extends AppCompatActivity implements AccessTokenReques
             public void onUserInfoFetched(User user) {
                 // Check if user photo is in user obj (in cache)
                 if (user.getBitmapPhoto() == null) {
-                    UserImageRequest request = new UserImageRequest(MainActivity.this);
-                    request.execute(user.getPhoto());
+                    async.getUserPhotoBitmap(MainActivity.this, user.getPhoto());
                 } else { // it is indeed in cache
                     userImage.setImageBitmap(user.getBitmapPhoto());
                 }
@@ -89,5 +87,13 @@ public class MainActivity extends AppCompatActivity implements AccessTokenReques
     @Override
     public void onImageFetched(Bitmap bmp) {
         userImage.setImageBitmap(bmp);
+    }
+
+    public FoursquareAsync getFoursquareAsync() {
+        return async;
+    }
+
+    public void setFoursquareAsync(FoursquareAsync foursquareAsync) {
+        this.async = foursquareAsync;
     }
 }
