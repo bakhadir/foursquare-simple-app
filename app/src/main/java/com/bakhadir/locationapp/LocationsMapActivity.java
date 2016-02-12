@@ -8,15 +8,12 @@ import android.net.Uri;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -26,7 +23,6 @@ import com.bakhadir.locationapp.adapters.VenuePhotosAdapter;
 import com.bakhadir.locationapp.app.AppController;
 import com.bakhadir.locationapp.constants.AppConstants;
 import com.bakhadir.locationapp.listeners.CompleteVenueInfoListener;
-import com.bakhadir.locationapp.listeners.VenuePhotosListener;
 import com.bakhadir.locationapp.models.Photo;
 import com.bakhadir.locationapp.models.Venue;
 import com.bakhadir.locationapp.utils.LocationAppUtils;
@@ -88,7 +84,7 @@ public class LocationsMapActivity extends FragmentActivity implements OnMapReady
 
         buildBottomSheet();
 
-        FoursquareAsync async = new FoursquareAsync(this);
+        LocationsAsyncTasks async = new LocationsAsyncTasks(this);
         async.getCompleteVenueInfo(this, venue.getId());
 
         // TODO get Venue photos async

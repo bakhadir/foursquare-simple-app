@@ -19,7 +19,7 @@ import com.bakhadir.locationapp.models.User;
 
 public class MainActivity extends AppCompatActivity implements AccessTokenRequestListener, ImageRequestListener {
 
-    private FoursquareAsync async;
+    private LocationsAsyncTasks async;
     private ImageView userImage;
     private ViewSwitcher viewSwitcher;
     private TextView userName;
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements AccessTokenReques
         });
 
         // Access request
-        async = new FoursquareAsync(this);
+        async = new LocationsAsyncTasks(this);
         async.requestAccess(this);
     }
 
@@ -89,11 +89,11 @@ public class MainActivity extends AppCompatActivity implements AccessTokenReques
         userImage.setImageBitmap(bmp);
     }
 
-    public FoursquareAsync getFoursquareAsync() {
+    public LocationsAsyncTasks getFoursquareAsync() {
         return async;
     }
 
-    public void setFoursquareAsync(FoursquareAsync foursquareAsync) {
-        this.async = foursquareAsync;
+    public void setFoursquareAsync(LocationsAsyncTasks locationsAsyncTasks) {
+        this.async = locationsAsyncTasks;
     }
 }

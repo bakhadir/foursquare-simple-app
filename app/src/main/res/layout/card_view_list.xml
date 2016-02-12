@@ -5,7 +5,10 @@
     android:id="@+id/card_view"
     android:layout_width="80dp"
     android:layout_height="80dp"
-    android:layout_margin="5dp">
+    android:layout_margin="5dp"
+    android:elevation="5dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground">
 
     <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/venuePhoto"

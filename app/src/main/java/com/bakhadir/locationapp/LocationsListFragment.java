@@ -81,8 +81,12 @@ public class LocationsListFragment extends Fragment {
 //        mAdapter.clear();
         // Clear Volley Cache (we want to get new Locations around)
         AppController.getInstance().getRequestQueue().getCache().clear();
+
         // Restart activity
         Intent intent = new Intent(getActivity(), LocationsActivity.class);
+        // Put boolean REQUESTING_LOCATION_UPDATES_KEY = true extra, so LocationsActivity's
+        // onResume() will fire up startLocationUpdates();
+        intent.putExtra(LocationsActivity.REQUESTING_LOCATION_UPDATES_KEY, true);
         startActivity(intent);
         getActivity().finish();
     }

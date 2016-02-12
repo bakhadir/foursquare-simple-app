@@ -57,7 +57,7 @@ public class LocationsActivityTest extends ActivityInstrumentationTestCase2<Loca
         assertNotNull("mFrameLayout is null", mFrameLayout);
     }
 
-    public void testGoogleApiClient() throws Throwable {
+    /*public void testGoogleApiClient() throws Throwable {
         final CountDownLatch signal = new CountDownLatch(1);
 
         runTestOnUiThread(new Runnable() {
@@ -71,9 +71,9 @@ public class LocationsActivityTest extends ActivityInstrumentationTestCase2<Loca
             }
         });
         signal.await(5, TimeUnit.SECONDS);
-    }
+    }*/
 
-    public void testFoursquareVenuesNearbyRequest() throws Throwable{
+    /*public void testFoursquareVenuesNearbyRequest() throws Throwable{
         final CountDownLatch signal = new CountDownLatch(1);
 
         Location userLocation = new Location("user_location");
@@ -91,7 +91,7 @@ public class LocationsActivityTest extends ActivityInstrumentationTestCase2<Loca
         });
 
         signal.await(5, TimeUnit.SECONDS);
-    }
+    }*/
 
     private abstract class CallbackListener implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, FoursquareVenuesRequestListener {
         private CountDownLatch signal;
@@ -126,7 +126,7 @@ public class LocationsActivityTest extends ActivityInstrumentationTestCase2<Loca
         }
     }
 
-    private class GoogleApiClientListener extends CallbackListener {
+    /*private class GoogleApiClientListener extends CallbackListener {
 
         GoogleApiClientListener(CountDownLatch signal) {
             super(signal);
@@ -150,9 +150,9 @@ public class LocationsActivityTest extends ActivityInstrumentationTestCase2<Loca
             assertNotNull("mLastLocation is null", mLastLocation);
         }
 
-    }
+    }*/
 
-    private class FoursquareVenuesRqstListener extends CallbackListener {
+    /*private class FoursquareVenuesRqstListener extends CallbackListener {
 
         FoursquareVenuesRqstListener(CountDownLatch signal) {
             super(signal);
@@ -175,7 +175,7 @@ public class LocationsActivityTest extends ActivityInstrumentationTestCase2<Loca
             Log.i(TAG, errorMsg);
             super.onError(errorMsg);
         }
-    }
+    }*/
 
     @Override
     protected void tearDown() throws Exception {

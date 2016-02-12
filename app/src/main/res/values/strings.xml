@@ -3,7 +3,7 @@
     <string name="user_image">User image</string>
     <string name="locations_button_text">LOCATIONS</string>
     <string name="user_name">%1$s %2$s</string>
-    <string name="locations_title">Locations</string>
+    <!--<string name="locations_title">Locations</string>-->
     <string name="distance_in_miles">%1$s miles away</string>
     <string name="title_activity_locations_map">Map</string>
     <string name="please_enable_gps">GPS have to be enabled to get locations nearby</string>
@@ -14,10 +14,15 @@
     <string name="not_avail">N/A</string>
     <string name="title_activity_fullscreen_photos">Photos</string>
 
+    <string name="google_app_id">scientific-now-116820</string>
+
     <string name="tag_phone_icon">phone_tag</string>
     <string name="tag_menu_icon">menu_tag</string>
     <string name="tag_website_icon">website_tag</string>
     <string name="tag_twitter_icon">twitter_tag</string>
     <string name="tag_facebook_icon">facebook_tag</string>
+    <string name="action_login">Log In</string>
+    <string name="action_settings">Settings</string>
+    <string name="locations_activity_title">Locations near you</string>
 
 </resources>

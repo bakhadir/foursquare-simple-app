@@ -16,9 +16,10 @@
 
         <fragment
             android:id="@+id/locationMap"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
+            class="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:name="com.bakhadir.locationapp.LocationsMapActivity"/>
 
     </LinearLayout>
 

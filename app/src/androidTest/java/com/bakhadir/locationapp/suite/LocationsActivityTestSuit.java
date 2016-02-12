@@ -1,5 +1,6 @@
 package com.bakhadir.locationapp.suite;
 
+import com.bakhadir.locationapp.LocationsActivityGetVenuesNearbyTest;
 import com.bakhadir.locationapp.LocationsActivityUITest;
 
 import org.junit.runner.RunWith;
@@ -11,7 +12,7 @@ import org.junit.runners.Suite;
 
 // Runs MainActivity unit tests
 @RunWith(Suite.class)
-@Suite.SuiteClasses({LocationsActivityUITest.class})
+@Suite.SuiteClasses({LocationsActivityUITest.class, LocationsActivityGetVenuesNearbyTest.class})
 
 public class LocationsActivityTestSuit {
 }

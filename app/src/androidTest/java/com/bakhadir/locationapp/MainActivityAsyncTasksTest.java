@@ -1,12 +1,10 @@
 package com.bakhadir.locationapp;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.support.test.espresso.contrib.CountingIdlingResource;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.test.UiThreadTest;
 import android.test.suitebuilder.annotation.LargeTest;
 
 import com.bakhadir.locationapp.constants.AppConstants;
@@ -53,12 +51,12 @@ public class MainActivityAsyncTasksTest {
     public ActivityTestRule<MainActivity> mMainActivityTestRule =
             new ActivityTestRule<>(MainActivity.class);
 
-    private class DecoratedFoursquareAsync extends FoursquareAsync {
-        private FoursquareAsync realFoursquareAsync;
+    private class DecoratedLocationsAsyncTasks extends LocationsAsyncTasks {
+        private LocationsAsyncTasks realLocationsAsyncTasks;
         private CountingIdlingResource foursquareIdlingResource;
 
-        private DecoratedFoursquareAsync(FoursquareAsync realFoursquareAsync, CountingIdlingResource foursquareIdlingResource) {
-            this.realFoursquareAsync = checkNotNull(realFoursquareAsync);
+        private DecoratedLocationsAsyncTasks(LocationsAsyncTasks realLocationsAsyncTasks, CountingIdlingResource foursquareIdlingResource) {
+            this.realLocationsAsyncTasks = checkNotNull(realLocationsAsyncTasks);
             this.foursquareIdlingResource = checkNotNull(foursquareIdlingResource);
         }
 
@@ -69,7 +67,7 @@ public class MainActivityAsyncTasksTest {
             // resource is idle and the test will be able to proceed.
             foursquareIdlingResource.increment();
             try {
-                realFoursquareAsync.requestAccess(listener);
+                realLocationsAsyncTasks.requestAccess(listener);
             } finally {
                 foursquareIdlingResource.decrement();
             }
@@ -82,7 +80,7 @@ public class MainActivityAsyncTasksTest {
             // resource is idle and the test will be able to proceed.
             foursquareIdlingResource.increment();
             try {
-                realFoursquareAsync.getUserInfo(listener);
+                realLocationsAsyncTasks.getUserInfo(listener);
             } finally {
                 foursquareIdlingResource.decrement();
             }
@@ -95,7 +93,7 @@ public class MainActivityAsyncTasksTest {
             // resource is idle and the test will be able to proceed.
             foursquareIdlingResource.increment();
             try {
-                realFoursquareAsync.getUserPhotoBitmap(listener, userPhotoUrl);
+                realLocationsAsyncTasks.getUserPhotoBitmap(listener, userPhotoUrl);
             } finally {
                 foursquareIdlingResource.decrement();
             }
@@ -105,11 +103,11 @@ public class MainActivityAsyncTasksTest {
     @Before
     public void initTest() {
         mActivity = mMainActivityTestRule.getActivity();
-        FoursquareAsync realFoursquareAsync = mActivity.getFoursquareAsync();
+        LocationsAsyncTasks realLocationsAsyncTasks = mActivity.getFoursquareAsync();
         // Here, we use CountingIdlingResource - a common convenience class - to track the idle state of
-        // the FoursquareAsync task.
+        // the LocationsAsyncTasks task.
         mCountingIdlingResource = new CountingIdlingResource("FoursquareAsyncCall");
-        mActivity.setFoursquareAsync(new DecoratedFoursquareAsync(realFoursquareAsync, mCountingIdlingResource));
+        mActivity.setFoursquareAsync(new DecoratedLocationsAsyncTasks(realLocationsAsyncTasks, mCountingIdlingResource));
         assertTrue(registerIdlingResources(mCountingIdlingResource));
     }
 
@@ -120,13 +118,13 @@ public class MainActivityAsyncTasksTest {
 
 
     @Test
-    public void testFoursquareAsyncRequestAccess() {
+    public void testFoursquareAsync_RequestAccess() {
         AccessTokenRequestTestListener listener = new AccessTokenRequestTestListener();
         mActivity.getFoursquareAsync().requestAccess(listener);
     }
 
     @Test
-    public void testFoursquareAsyncGetUserInfo() {
+    public void testFoursquareAsync_GetUserInfo() {
         final UserInfoRequestTestListener listener = new UserInfoRequestTestListener();
         // Have to use getInstrumentation().runOnMainSync() to avoid
         // java.lang.RuntimeException:
