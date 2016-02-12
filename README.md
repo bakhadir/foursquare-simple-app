@@ -35,7 +35,7 @@ https://github.com/condesales/easyFoursquare4Android
 
 TODO:
 - More tests.
-- Userless requests.
+- <del>Userless requests.</del>
 - Material Design (animations).
 - One map with all locations.
 - Settings (default search Criteria, more sorting options).
